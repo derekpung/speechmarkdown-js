@@ -224,7 +224,7 @@ export class AmazonPollySsmlFormatter extends SsmlFormatterBase {
     switch (ast.name) {
       case 'document': {
         if (this.options.includeFormatterComment) {
-          this.addComment('Converted from Speech Markdown to SSML for Amazon Alexa', lines);
+          this.addComment('Converted from Speech Markdown to SSML for Amazon Polly', lines);
         }
 
         if (this.options.includeSpeakTag) {
@@ -320,7 +320,9 @@ export class AmazonPollySsmlFormatter extends SsmlFormatterBase {
       }
       case 'plainText':
       case 'plainTextSpecialChars': {
-        lines.push(ast.allText);
+        let text = (this.options.escapeXmlSymbols) ? this.escapeXmlCharacters(ast.allText)
+                                                   : ast.allText;
+        lines.push(text);
         return lines;
       }
 

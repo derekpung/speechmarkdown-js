@@ -11,23 +11,6 @@ describe('emphasis-standard-moderate', () => {
     A (moderate)[emphasis:"moderate"] level
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
-
-    const options = {
-      platform: 'amazon-alexa'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      A <emphasis level="moderate">moderate</emphasis> level
-      A <emphasis level="moderate">moderate</emphasis> level
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
   test('converts to SSML - Amazon Polly', () => {
 
     const options = {
@@ -49,57 +32,6 @@ describe('emphasis-standard-moderate', () => {
 
     const options = {
       platform: 'amazon-polly-neural'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      A moderate level
-      A moderate level
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Google Assistant', () => {
-
-    const options = {
-      platform: 'google-assistant'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      A <emphasis level="moderate">moderate</emphasis> level
-      A <emphasis level="moderate">moderate</emphasis> level
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      A moderate level
-      A moderate level
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure'
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -137,10 +69,10 @@ describe('emphasis-standard-strong', () => {
     A (strong)[emphasis:"strong"] level
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
 
     const options = {
-      platform: 'amazon-alexa'
+      platform: 'amazon-polly'
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -153,42 +85,10 @@ describe('emphasis-standard-strong', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Google Assistant', () => {
+  test('converts to SSML - Amazon Polly (Neural)', () => {
 
     const options = {
-      platform: 'google-assistant'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      A <emphasis level="strong">strong</emphasis> level
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      A strong level
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure'
+      platform: 'amazon-polly-neural'
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -224,10 +124,10 @@ describe('emphasis-standard-none', () => {
     A (none)[emphasis:"none"] level
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
 
     const options = {
-      platform: 'amazon-alexa'
+      platform: 'amazon-polly'
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -240,26 +140,11 @@ describe('emphasis-standard-none', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Google Assistant', () => {
+
+  test('converts to SSML - Amazon Polly (Neural)', () => {
 
     const options = {
-      platform: 'google-assistant'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      A <emphasis level="none">none</emphasis> level
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby'
+      platform: 'amazon-polly-neural'
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -272,21 +157,6 @@ describe('emphasis-standard-none', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      A none level
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
 
   test('converts to Plain Text', () => {
 
@@ -311,10 +181,10 @@ describe('emphasis-standard-reduced', () => {
     A (reduced)[emphasis:"reduced"] level
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
 
     const options = {
-      platform: 'amazon-alexa'
+      platform: 'amazon-polly'
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -327,42 +197,10 @@ describe('emphasis-standard-reduced', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Google Assistant', () => {
+  test('converts to SSML - Amazon Polly (Neural)', () => {
 
     const options = {
-      platform: 'google-assistant'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      A <emphasis level="reduced">reduced</emphasis> level
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      A reduced level
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure'
+      platform: 'amazon-polly-neural'
     };
     const ssml = speech.toSSML(markdown, options);
 

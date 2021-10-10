@@ -15,31 +15,7 @@ describe('newscaster-section normal to dj to normal', () => {
     #[defaults]
     Now back to normal speech.
   `;
-
-  test('converts to SSML - Amazon Alexa', () => {
-
-    const options = {
-      platform: 'amazon-alexa'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-    <speak>
-    Normal speech.
-
-
-    <amazon:domain name="news">
-    Switching to a newscaster.
-
-    </amazon:domain>
-
-    Now back to normal speech.
-    </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
+  
   test('converts to SSML - Amazon Polly', () => {
 
     const options = {
@@ -85,69 +61,7 @@ describe('newscaster-section normal to dj to normal', () => {
 
     expect(ssml).toBe(expected);
   });
-
-  test('converts to SSML - Google Assistant', () => {
-
-    const options = {
-      platform: 'google-assistant',
-      preserveEmptyLines: false
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Normal speech.
-      Switching to a newscaster.
-      Now back to normal speech.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby',
-      preserveEmptyLines: false
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Normal speech.
-      Switching to a newscaster.
-      Now back to normal speech.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-    <speak>
-    Normal speech.
-
-
-    <mstts:express-as style="newscast">
-    Switching to a newscaster.
-
-    </mstts:express-as>
-
-    Now back to normal speech.
-    </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
+  
   test('converts to Plain Text', () => {
 
     const options = {
@@ -178,10 +92,10 @@ describe('newscaster-section end speak tag at end', () => {
     Section 1
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly (Neural)', () => {
 
     const options = {
-      platform: 'amazon-alexa'
+      platform: 'amazon-polly-neural'
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -197,10 +111,10 @@ describe('newscaster-section end speak tag at end', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Google Assistant', () => {
+  test('converts to SSML - Amazon Polly', () => {
 
     const options = {
-      platform: 'google-assistant',
+      platform: 'amazon-polly',
       preserveEmptyLines: false
     };
     const ssml = speech.toSSML(markdown, options);
@@ -213,43 +127,7 @@ describe('newscaster-section end speak tag at end', () => {
 
     expect(ssml).toBe(expected);
   });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby',
-      preserveEmptyLines: false
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Section 1
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-
-      <mstts:express-as style="newscast">
-      Section 1</mstts:express-as>
-
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
+  
   test('converts to Plain Text', () => {
 
     const options = {
@@ -272,10 +150,10 @@ describe('newscaster-section section on same line', () => {
     #[newscaster] Hey there, nice to meet you
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly (Neural)', () => {
 
     const options = {
-      platform: 'amazon-alexa'
+      platform: 'amazon-polly-neural'
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -290,10 +168,10 @@ describe('newscaster-section section on same line', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Google Assistant', () => {
+  test('converts to SSML - Amazon Polly', () => {
 
     const options = {
-      platform: 'google-assistant'
+      platform: 'amazon-polly'
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -305,41 +183,7 @@ describe('newscaster-section section on same line', () => {
 
     expect(ssml).toBe(expected);
   });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-       Hey there, nice to meet you
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-
-      <mstts:express-as style="newscast"> Hey there, nice to meet you</mstts:express-as>
-
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
+  
   test('converts to Plain Text', () => {
 
     const options = {

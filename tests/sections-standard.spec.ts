@@ -18,40 +18,7 @@ describe('sections-standard', () => {
     #[voice:"device"]
     Now back to the device setting.
   `;
-
-  test('converts to SSML - Amazon Alexa', () => {
-
-    const options = {
-      platform: 'amazon-alexa'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-    <speak>
-    My voice and language is based on the device.
-
-
-    <voice name="Kendra">
-    <lang xml:lang="en-US">
-    Now I am speaking as Kendra from the US with a US accent.
-
-    </lang>
-    </voice>
-
-    <voice name="Brian">
-    <lang xml:lang="en-US">
-    Switching to Brian from the UK with a US accent.
-
-    </lang>
-    </voice>
-
-    Now back to the device setting.
-    </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
+  
   test('converts to SSML - Amazon Polly', () => {
 
     const options = {
@@ -109,76 +76,7 @@ describe('sections-standard', () => {
 
     expect(ssml).toBe(expected);
   });
-
-  test('converts to SSML - Google Assistant', () => {
-
-    const options = {
-      platform: 'google-assistant',
-      preserveEmptyLines: false
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      My voice and language is based on the device.
-      Now I am speaking as Kendra from the US with a US accent.
-      Switching to Brian from the UK with a US accent.
-      Now back to the device setting.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby',
-      preserveEmptyLines: false
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      My voice and language is based on the device.
-      Now I am speaking as Kendra from the US with a US accent.
-      Switching to Brian from the UK with a US accent.
-      Now back to the device setting.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-    <speak>
-    My voice and language is based on the device.
-
-
-    <voice name="Kendra">
-    Now I am speaking as Kendra from the US with a US accent.
-
-    </voice>
-
-    <voice name="Brian">
-    Switching to Brian from the UK with a US accent.
-
-    </voice>
-
-    Now back to the device setting.
-    </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
+  
   test('converts to Plain Text', () => {
 
     const options = {
@@ -215,25 +113,21 @@ describe('sections-standard end speak tag at end', () => {
     Section 2
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
 
     const options = {
-      platform: 'amazon-alexa'
+      platform: 'amazon-polly'
     };
     const ssml = speech.toSSML(markdown, options);
 
     const expected = dedent`
       <speak>
 
-      <voice name="Kendra">
       Section 1
 
-      </voice>
 
-      <voice name="Brian">
       <lang xml:lang="en-GB">
       Section 2</lang>
-      </voice>
 
       </speak>
     `;
@@ -241,66 +135,28 @@ describe('sections-standard end speak tag at end', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Google Assistant', () => {
+  test('converts to SSML - Amazon Polly (Neural)', () => {
 
     const options = {
-      platform: 'google-assistant',
-      preserveEmptyLines: false
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Section 1
-      Section 2
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby',
-      preserveEmptyLines: false
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Section 1
-      Section 2
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure'
+      platform: 'amazon-polly-neural'
     };
     const ssml = speech.toSSML(markdown, options);
 
     const expected = dedent`
       <speak>
 
-      <voice name="Kendra">
       Section 1
 
-      </voice>
 
-      <voice name="Brian">
-      Section 2</voice>
+      <lang xml:lang="en-GB">
+      Section 2</lang>
 
       </speak>
     `;
 
     expect(ssml).toBe(expected);
   });
-
+  
   test('converts to Plain Text', () => {
 
     const options = {
@@ -326,28 +182,10 @@ describe('sections-standard voice section on same line', () => {
     #[voice:'Brian'] Hey there, nice to meet you
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
 
     const options = {
-      platform: 'amazon-alexa'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-
-      <voice name="Brian"> Hey there, nice to meet you</voice>
-
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Google Assistant', () => {
-
-    const options = {
-      platform: 'google-assistant'
+      platform: 'amazon-polly'
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -359,36 +197,17 @@ describe('sections-standard voice section on same line', () => {
 
     expect(ssml).toBe(expected);
   });
-
-  test('converts to SSML - Samsung Bixby', () => {
+  
+  test('converts to SSML - Amazon Polly (Neural)', () => {
 
     const options = {
-      platform: 'samsung-bixby',
-      preserveEmptyLines: false
+      platform: 'amazon-polly-neural'
     };
     const ssml = speech.toSSML(markdown, options);
 
     const expected = dedent`
       <speak>
        Hey there, nice to meet you
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-
-      <voice name="Brian"> Hey there, nice to meet you</voice>
-
       </speak>
     `;
 

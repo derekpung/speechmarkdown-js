@@ -11,23 +11,6 @@ describe('pitch-standard-medium', () => {
     A (medium)[pitch:'medium'] pitch 3
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
-    const options = {
-      platform: 'amazon-alexa',
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      A <prosody pitch="medium">medium</prosody> pitch 1
-      A <prosody pitch="medium">medium</prosody> pitch 2
-      A <prosody pitch="medium">medium</prosody> pitch 3
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
   test('converts to SSML - Amazon Polly', () => {
     const options = {
       platform: 'amazon-polly',
@@ -62,57 +45,6 @@ describe('pitch-standard-medium', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Google Assistant', () => {
-    const options = {
-      platform: 'google-assistant',
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      A <prosody pitch="medium">medium</prosody> pitch 1
-      A <prosody pitch="medium">medium</prosody> pitch 2
-      A <prosody pitch="medium">medium</prosody> pitch 3
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-    const options = {
-      platform: 'samsung-bixby',
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      A <prosody pitch="medium">medium</prosody> pitch 1
-      A <prosody pitch="medium">medium</prosody> pitch 2
-      A <prosody pitch="medium">medium</prosody> pitch 3
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-    const options = {
-      platform: 'microsoft-azure',
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      A <prosody pitch="medium">medium</prosody> pitch 1
-      A <prosody pitch="medium">medium</prosody> pitch 2
-      A <prosody pitch="medium">medium</prosody> pitch 3
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
   test('converts to Plain Text', () => {
     const options = {};
     const text = speech.toText(markdown, options);
@@ -135,9 +67,9 @@ describe('pitch-standard-x-low', () => {
     A (xlow)[pitch:'x-low'] pitch
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
     const options = {
-      platform: 'amazon-alexa',
+      platform: 'amazon-polly',
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -151,54 +83,22 @@ describe('pitch-standard-x-low', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Google Assistant', () => {
+  test('converts to SSML - Amazon Polly (Neural)', () => {
     const options = {
-      platform: 'google-assistant',
+      platform: 'amazon-polly-neural',
     };
     const ssml = speech.toSSML(markdown, options);
 
     const expected = dedent`
       <speak>
-      A <prosody pitch="x-low">xlow</prosody> pitch
-      A <prosody pitch="x-low">xlow</prosody> pitch
+      A xlow pitch
+      A xlow pitch
       </speak>
     `;
 
     expect(ssml).toBe(expected);
   });
-
-  test('converts to SSML - Samsung Bixby', () => {
-    const options = {
-      platform: 'samsung-bixby',
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      A <prosody pitch="x-low">xlow</prosody> pitch
-      A <prosody pitch="x-low">xlow</prosody> pitch
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-    const options = {
-      platform: 'microsoft-azure',
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      A <prosody pitch="x-low">xlow</prosody> pitch
-      A <prosody pitch="x-low">xlow</prosody> pitch
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
+  
   test('converts to Plain Text', () => {
     const options = {};
     const text = speech.toText(markdown, options);
@@ -220,9 +120,9 @@ describe('pitch-standard-low', () => {
     A (low)[pitch:'low'] pitch
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
     const options = {
-      platform: 'amazon-alexa',
+      platform: 'amazon-polly',
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -235,49 +135,17 @@ describe('pitch-standard-low', () => {
 
     expect(ssml).toBe(expected);
   });
-
-  test('converts to SSML - Google Assistant', () => {
+  
+  test('converts to SSML - Amazon Polly (Neural)', () => {
     const options = {
-      platform: 'google-assistant',
+      platform: 'amazon-polly-neural',
     };
     const ssml = speech.toSSML(markdown, options);
 
     const expected = dedent`
       <speak>
-      A <prosody pitch="low">low</prosody> pitch
-      A <prosody pitch="low">low</prosody> pitch
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-    const options = {
-      platform: 'samsung-bixby',
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      A <prosody pitch="low">low</prosody> pitch
-      A <prosody pitch="low">low</prosody> pitch
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-    const options = {
-      platform: 'microsoft-azure',
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      A <prosody pitch="low">low</prosody> pitch
-      A <prosody pitch="low">low</prosody> pitch
+      A low pitch
+      A low pitch
       </speak>
     `;
 
@@ -305,9 +173,9 @@ describe('pitch-standard-x-high', () => {
     A (xhigh)[pitch:'x-high'] pitch
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
     const options = {
-      platform: 'amazon-alexa',
+      platform: 'amazon-polly',
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -321,54 +189,22 @@ describe('pitch-standard-x-high', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Google Assistant', () => {
+  test('converts to SSML - Amazon Polly (Neural)', () => {
     const options = {
-      platform: 'google-assistant',
+      platform: 'amazon-polly-neural',
     };
     const ssml = speech.toSSML(markdown, options);
 
     const expected = dedent`
       <speak>
-      A <prosody pitch="x-high">xhigh</prosody> pitch
-      A <prosody pitch="x-high">xhigh</prosody> pitch
+      A xhigh pitch
+      A xhigh pitch
       </speak>
     `;
 
     expect(ssml).toBe(expected);
   });
-
-  test('converts to SSML - Samsung Bixby', () => {
-    const options = {
-      platform: 'samsung-bixby',
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      A <prosody pitch="x-high">xhigh</prosody> pitch
-      A <prosody pitch="x-high">xhigh</prosody> pitch
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-    const options = {
-      platform: 'microsoft-azure',
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      A <prosody pitch="x-high">xhigh</prosody> pitch
-      A <prosody pitch="x-high">xhigh</prosody> pitch
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
+  
   test('converts to Plain Text', () => {
     const options = {};
     const text = speech.toText(markdown, options);
@@ -390,9 +226,9 @@ describe('pitch-standard-high', () => {
     A (high)[pitch:'high'] pitch
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
     const options = {
-      platform: 'amazon-alexa',
+      platform: 'amazon-polly',
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -405,49 +241,17 @@ describe('pitch-standard-high', () => {
 
     expect(ssml).toBe(expected);
   });
-
-  test('converts to SSML - Google Assistant', () => {
+  
+  test('converts to SSML - Amazon Polly (Neural)', () => {
     const options = {
-      platform: 'google-assistant',
+      platform: 'amazon-polly-neural',
     };
     const ssml = speech.toSSML(markdown, options);
 
     const expected = dedent`
       <speak>
-      A <prosody pitch="high">high</prosody> pitch
-      A <prosody pitch="high">high</prosody> pitch
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-    const options = {
-      platform: 'samsung-bixby',
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      A <prosody pitch="high">high</prosody> pitch
-      A <prosody pitch="high">high</prosody> pitch
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-    const options = {
-      platform: 'microsoft-azure',
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      A <prosody pitch="high">high</prosody> pitch
-      A <prosody pitch="high">high</prosody> pitch
+      A high pitch
+      A high pitch
       </speak>
     `;
 

@@ -10,22 +10,6 @@ describe('drc-standard', () => {
     Some audio is difficult to hear in a moving vehicle, but (this audio is less difficult to hear in a moving vehicle.)[drc]
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
-
-    const options = {
-      platform: 'amazon-alexa'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-    <speak>
-    Some audio is difficult to hear in a moving vehicle, but this audio is less difficult to hear in a moving vehicle.
-    </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
   test('converts to SSML - Amazon Polly', () => {
 
     const options = {
@@ -52,54 +36,6 @@ describe('drc-standard', () => {
     const expected = dedent`
     <speak>
     Some audio is difficult to hear in a moving vehicle, but <amazon:effect name="drc">this audio is less difficult to hear in a moving vehicle.</amazon:effect>
-    </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Google Assistant', () => {
-
-    const options = {
-      platform: 'google-assistant'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-    <speak>
-    Some audio is difficult to hear in a moving vehicle, but this audio is less difficult to hear in a moving vehicle.
-    </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-    <speak>
-    Some audio is difficult to hear in a moving vehicle, but this audio is less difficult to hear in a moving vehicle.
-    </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-    <speak>
-    Some audio is difficult to hear in a moving vehicle, but this audio is less difficult to hear in a moving vehicle.
     </speak>
     `;
 

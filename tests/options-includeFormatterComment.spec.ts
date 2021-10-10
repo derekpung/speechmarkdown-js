@@ -9,23 +9,7 @@ describe('options-includeFormatterComment default to false', () => {
   const markdown = dedent`
     Text line
   `;
-
-  test('converts to SSML - Amazon Alexa', () => {
-
-    const options = {
-      platform: 'amazon-alexa'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Text line
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
+  
   test('converts to SSML - Amazon Polly', () => {
 
     const options = {
@@ -57,55 +41,6 @@ describe('options-includeFormatterComment default to false', () => {
 
     expect(ssml).toBe(expected);
   });
-
-  test('converts to SSML - Google Assistant', () => {
-
-    const options = {
-      platform: 'google-assistant'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Text line
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby',
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Text line
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure',
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Text line
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
 });
 
 describe('options-includeFormatterComment set to false', () => {
@@ -116,10 +51,10 @@ describe('options-includeFormatterComment set to false', () => {
     Text line
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
 
     const options = {
-      platform: 'amazon-alexa',
+      platform: 'amazon-polly',
       includeFormatterComment: false,
     };
     const ssml = speech.toSSML(markdown, options);
@@ -133,10 +68,10 @@ describe('options-includeFormatterComment set to false', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Google Assistant', () => {
+  test('converts to SSML - Amazon Polly (Neural)', () => {
 
     const options = {
-      platform: 'google-assistant',
+      platform: 'amazon-polly-neural',
       includeFormatterComment: false,
     };
     const ssml = speech.toSSML(markdown, options);
@@ -149,41 +84,6 @@ describe('options-includeFormatterComment set to false', () => {
 
     expect(ssml).toBe(expected);
   });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby',
-      includeFormatterComment: false,
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Text line
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure',
-      includeFormatterComment: false,
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Text line
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
 });
 
 describe('options-includeFormatterComment set to true', () => {
@@ -194,16 +94,16 @@ describe('options-includeFormatterComment set to true', () => {
     Text line
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
 
     const options = {
-      platform: 'amazon-alexa',
+      platform: 'amazon-polly',
       includeFormatterComment: true,
     };
     const ssml = speech.toSSML(markdown, options);
 
     const expected = dedent`
-      <!-- Converted from Speech Markdown to SSML for Amazon Alexa -->
+      <!-- Converted from Speech Markdown to SSML for Amazon Polly -->
       <speak>
       Text line
       </speak>
@@ -212,16 +112,16 @@ describe('options-includeFormatterComment set to true', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Google Assistant', () => {
+  test('converts to SSML - Amazon Polly (Neural)', () => {
 
     const options = {
-      platform: 'google-assistant',
+      platform: 'amazon-polly-neural',
       includeFormatterComment: true,
     };
     const ssml = speech.toSSML(markdown, options);
 
     const expected = dedent`
-      <!-- Converted from Speech Markdown to SSML for Google Assistant -->
+      <!-- Converted from Speech Markdown to SSML for Amazon Polly (Neural) -->
       <speak>
       Text line
       </speak>
@@ -229,42 +129,5 @@ describe('options-includeFormatterComment set to true', () => {
 
     expect(ssml).toBe(expected);
   });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby',
-      includeFormatterComment: true,
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <!-- Converted from Speech Markdown to SSML for Samsung Bixby -->
-      <speak>
-      Text line
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure',
-      includeFormatterComment: true,
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <!-- Converted from Speech Markdown to SSML for Microsoft Azure -->
-      <speak>
-      Text line
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
 });
 

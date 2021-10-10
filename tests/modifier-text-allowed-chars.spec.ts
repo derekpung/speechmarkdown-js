@@ -9,23 +9,7 @@ describe('modifier-text-allowed-chars minus sign', () => {
   const markdown = dedent`
     Some (ex-text)[vol]
   `;
-
-  test('converts to SSML - Amazon Alexa', () => {
-
-    const options = {
-      platform: 'amazon-alexa'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Some <prosody volume="medium">ex-text</prosody>
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
+  
   test('converts to SSML - Amazon Polly', () => {
 
     const options = {
@@ -57,55 +41,7 @@ describe('modifier-text-allowed-chars minus sign', () => {
 
     expect(ssml).toBe(expected);
   });
-
-  test('converts to SSML - Google Assistant', () => {
-
-    const options = {
-      platform: 'google-assistant'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Some <prosody volume="medium">ex-text</prosody>
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Some <prosody volume="medium">ex-text</prosody>
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Some <prosody volume="medium">ex-text</prosody>
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
+  
   test('converts to Plain Text', () => {
 
     const options = {
@@ -129,10 +65,10 @@ describe('modifier-text-allowed-chars non-bracket special chars', () => {
     This is text with ~parens! but this and other special characters: *~@#\\_!+- are ignored
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
 
     const options = {
-      platform: 'amazon-alexa'
+      platform: 'amazon-polly'
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -145,42 +81,10 @@ describe('modifier-text-allowed-chars non-bracket special chars', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Google Assistant', () => {
+  test('converts to SSML - Amazon Polly (Neural)', () => {
 
     const options = {
-      platform: 'google-assistant'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      This is text with ~parens! but this and other special characters: *~@#\\_!+- are ignored
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      This is text with ~parens! but this and other special characters: *~@#\\_!+- are ignored
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure'
+      platform: 'amazon-polly-neural'
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -215,10 +119,10 @@ describe('modifier-text-allowed-chars bracket special chars', () => {
     This is text with ~parens! but this and other special characters: *~@#\\_!+- are ignored
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
 
     const options = {
-      platform: 'amazon-alexa'
+      platform: 'amazon-polly'
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -231,42 +135,10 @@ describe('modifier-text-allowed-chars bracket special chars', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Google Assistant', () => {
+  test('converts to SSML - Amazon Polly (Neural)', () => {
 
     const options = {
-      platform: 'google-assistant'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      This is text with ~parens! but this and other special characters: *~@#\\_!+- are ignored
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      This is text with ~parens! but this and other special characters: *~@#\\_!+- are ignored
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure'
+      platform: 'amazon-polly-neural'
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -302,10 +174,10 @@ describe('modifier-text-allowed-chars bracket special chars', () => {
     This is text with (parens) but this and other special characters: []()*~@#\\_!+- are ignored
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
 
     const options = {
-      platform: 'amazon-alexa'
+      platform: 'amazon-polly'
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -318,10 +190,10 @@ describe('modifier-text-allowed-chars bracket special chars', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Google Assistant', () => {
+  test('converts to SSML - Amazon Polly (Neural)', () => {
 
     const options = {
-      platform: 'google-assistant'
+      platform: 'amazon-polly'
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -333,39 +205,7 @@ describe('modifier-text-allowed-chars bracket special chars', () => {
 
     expect(ssml).toBe(expected);
   });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      This is text with (parens) but this and other special characters: []()*~@#\\_!+- are ignored
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      This is text with (parens) but this and other special characters: []()*~@#\\_!+- are ignored
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
+  
   test('converts to Plain Text', () => {
 
     const options = {

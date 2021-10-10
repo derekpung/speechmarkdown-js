@@ -10,22 +10,6 @@ describe('address-standard', () => {
     I'm at (150th CT NE, Redmond, WA)[address].
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
-
-    const options = {
-      platform: 'amazon-alexa'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
   test('converts to SSML - Amazon Polly', () => {
     
     const options = {
@@ -47,54 +31,6 @@ describe('address-standard', () => {
       platform: 'amazon-polly-neural'
     };
     const ssml = speech.toSSML(markdown, options);
-    const expected = dedent`
-      <speak>
-      I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-  
-  test('converts to SSML - Google Assistant', () => {
-
-    const options = {
-      platform: 'google-assistant'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      I'm at 150th CT NE, Redmond, WA.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
     const expected = dedent`
       <speak>
       I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>.

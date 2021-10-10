@@ -1,7 +1,7 @@
 {
-  "name": "speechmarkdown-js",
-  "version": "1.9.0",
-  "description": "Speech Markdown parser and formatters in TypeScript.",
+  "name": "speechmarkdown-polly-js",
+  "version": "1.9.1",
+  "description": "Speech Markdown parser and formatters in TypeScript. Updated suppport for Amazon Polly",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -11,12 +11,16 @@
   "engines": {
     "node": ">= 10.13"
   },
-  "author": "Mark Tucker <github@speechmarkdown.org>",
+  "contributors": [
+    "Mark Tucker <github@speechmarkdown.org>",
+    "Derek Pung (http://github.com/derekpung/)",
+    "Garcia Guillaume (http://guillaumegarcia13.blogspot.fr)"
+  ],
   "license": "MIT",
-  "homepage": "https://github.com/speechmarkdown/speechmarkdown-js#readme",
+  "homepage": "https://github.com/derekpung/speechmarkdown-js/tree/amzn-polly-support#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/speechmarkdown/speechmarkdown-js"
+    "url": "https://github.com/derekpung/speechmarkdown-js/tree/amzn-polly-support"
   },
   "bugs": {
     "url": "https://github.com/speechmarkdown/speechmarkdown-js/issues"

@@ -10,22 +10,6 @@ describe('cardinal-standard', () => {
     Your balance is: (12345)[cardinal].
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
-
-    const options = {
-      platform: 'amazon-alexa'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Your balance is: <say-as interpret-as="number">12345</say-as>.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
   test('converts to SSML - Amazon Polly', () => {
 
     const options = {
@@ -46,54 +30,6 @@ describe('cardinal-standard', () => {
 
     const options = {
       platform: 'amazon-polly-neural'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Your balance is: <say-as interpret-as="cardinal">12345</say-as>.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Google Assistant', () => {
-
-    const options = {
-      platform: 'google-assistant'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Your balance is: <say-as interpret-as="number">12345</say-as>.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Your balance is: <say-as interpret-as="cardinal">12345</say-as>.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure'
     };
     const ssml = speech.toSSML(markdown, options);
 

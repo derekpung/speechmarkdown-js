@@ -9,23 +9,7 @@ describe('options-includeSpeakTag default to true', () => {
   const markdown = dedent`
     Text line
   `;
-
-  test('converts to SSML - Amazon Alexa', () => {
-
-    const options = {
-      platform: 'amazon-alexa'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Text line
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
+  
   test('converts to SSML - Amazon Polly', () => {
 
     const options = {
@@ -58,54 +42,6 @@ describe('options-includeSpeakTag default to true', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Google Assistant', () => {
-
-    const options = {
-      platform: 'google-assistant'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Text line
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Text line
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Text line
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
 });
 
 describe('options-includeSpeakTag set to true', () => {
@@ -116,10 +52,10 @@ describe('options-includeSpeakTag set to true', () => {
     Text line
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
 
     const options = {
-      platform: 'amazon-alexa',
+      platform: 'amazon-polly',
       includeSpeakTag: true,
     };
     const ssml = speech.toSSML(markdown, options);
@@ -133,10 +69,10 @@ describe('options-includeSpeakTag set to true', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Google Assistant', () => {
+  test('converts to SSML - Amazon Polly (Neural)', () => {
 
     const options = {
-      platform: 'google-assistant',
+      platform: 'amazon-polly-neural',
       includeSpeakTag: true,
     };
     const ssml = speech.toSSML(markdown, options);
@@ -149,41 +85,6 @@ describe('options-includeSpeakTag set to true', () => {
 
     expect(ssml).toBe(expected);
   });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby',
-      includeSpeakTag: true,
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Text line
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure',
-      includeSpeakTag: true,
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Text line
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
 });
 
 
@@ -195,10 +96,10 @@ describe('options-includeSpeakTag set to false', () => {
     Text line
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
 
     const options = {
-      platform: 'amazon-alexa',
+      platform: 'amazon-polly',
       includeSpeakTag: false,
     };
     const ssml = speech.toSSML(markdown, options);
@@ -209,11 +110,11 @@ describe('options-includeSpeakTag set to false', () => {
 
     expect(ssml).toBe(expected);
   });
-
-  test('converts to SSML - Google Assistant', () => {
+  
+  test('converts to SSML - Amazon Polly (Neural)', () => {
 
     const options = {
-      platform: 'google-assistant',
+      platform: 'amazon-polly-neural',
       includeSpeakTag: false,
     };
     const ssml = speech.toSSML(markdown, options);
@@ -224,35 +125,4 @@ describe('options-includeSpeakTag set to false', () => {
 
     expect(ssml).toBe(expected);
   });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby',
-      includeSpeakTag: false,
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      Text line
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure',
-      includeSpeakTag: false,
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      Text line
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
 });

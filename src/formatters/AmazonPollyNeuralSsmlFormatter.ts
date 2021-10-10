@@ -6,6 +6,7 @@ export class AmazonPollyNeuralSsmlFormatter extends SsmlFormatterBase {
   constructor(public options: SpeechOptions) {
     super(options);
 
+    this.modifierKeyToSsmlTagMappings.emphasis = null;
     this.modifierKeyToSsmlTagMappings.cardinal = 'say-as';
     this.modifierKeyToSsmlTagMappings.digits = 'say-as';
     this.modifierKeyToSsmlTagMappings.drc = 'amazon:effect'
@@ -208,7 +209,7 @@ export class AmazonPollyNeuralSsmlFormatter extends SsmlFormatterBase {
     switch (ast.name) {
       case 'document': {
         if (this.options.includeFormatterComment) {
-          this.addComment('Converted from Speech Markdown to SSML for Amazon Polly', lines);
+          this.addComment('Converted from Speech Markdown to SSML for Amazon Polly (Neural)', lines);
         }
 
         if (this.options.includeSpeakTag) {
@@ -288,17 +289,22 @@ export class AmazonPollyNeuralSsmlFormatter extends SsmlFormatterBase {
         return lines;
       }
       
-      case 'shortEmphasisModerate': 
-      case 'shortEmphasisStrong': 
-      case 'shortEmphasisNone': 
+      case 'shortEmphasisModerate':
+      case 'shortEmphasisStrong':
+      case 'shortEmphasisNone':
       case 'shortEmphasisReduced': {
-        lines.push(ast.allText.replace(/\+/g, ""))
+        const text = ast.children[0].allText;
+        if (text) {
+          lines.push(text);
+        }
         return lines;
       }
 
       case 'plainText':
       case 'plainTextSpecialChars': {
-        lines.push(ast.allText);
+        let text = (this.options.escapeXmlSymbols) ? this.escapeXmlCharacters(ast.allText)
+                                                   : ast.allText;
+        lines.push(text);
         return lines;
       }
 

@@ -10,22 +10,6 @@ describe('disappointed-standard', () => {
     We can switch (from disappointed)[disappointed] to (really disappointed)[disappointed:"high"].
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
-
-    const options = {
-      platform: 'amazon-alexa'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      We can switch <amazon:emotion name="disappointed" intensity="medium">from disappointed</amazon:emotion> to <amazon:emotion name="disappointed" intensity="high">really disappointed</amazon:emotion>.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
   test('converts to SSML - Amazon Polly', () => {
 
     const options = {
@@ -46,38 +30,6 @@ describe('disappointed-standard', () => {
 
     const options = {
       platform: 'amazon-polly-neural'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      We can switch from disappointed to really disappointed.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Google Assistant', () => {
-
-    const options = {
-      platform: 'google-assistant'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      We can switch from disappointed to really disappointed.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby'
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -113,26 +65,10 @@ describe('disappointed-standard non-lowercase intensity', () => {
     We can switch (from disappointed)[disappointed] to (really disappointed)[disappointed:"HigH"].
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
 
     const options = {
-      platform: 'amazon-alexa'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      We can switch <amazon:emotion name="disappointed" intensity="medium">from disappointed</amazon:emotion> to <amazon:emotion name="disappointed" intensity="high">really disappointed</amazon:emotion>.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Google Assistant', () => {
-
-    const options = {
-      platform: 'google-assistant'
+      platform: 'amazon-polly'
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -145,10 +81,10 @@ describe('disappointed-standard non-lowercase intensity', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Samsung Bixby', () => {
+  test('converts to SSML - Amazon Polly (Neural)', () => {
 
     const options = {
-      platform: 'samsung-bixby'
+      platform: 'amazon-polly-neural'
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -184,26 +120,10 @@ describe('disappointed-standard invalid intensity', () => {
     We can switch (from disappointed)[disappointed] to (really disappointed)[disappointed:"pizza"].
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
 
     const options = {
-      platform: 'amazon-alexa'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      We can switch <amazon:emotion name="disappointed" intensity="medium">from disappointed</amazon:emotion> to really disappointed.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Google Assistant', () => {
-
-    const options = {
-      platform: 'google-assistant'
+      platform: 'amazon-polly'
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -216,10 +136,11 @@ describe('disappointed-standard invalid intensity', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Samsung Bixby', () => {
+
+  test('converts to SSML - Amazon Polly (Neural)', () => {
 
     const options = {
-      platform: 'samsung-bixby'
+      platform: 'amazon-polly-neural'
     };
     const ssml = speech.toSSML(markdown, options);
 

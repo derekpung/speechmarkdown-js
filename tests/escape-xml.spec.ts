@@ -11,7 +11,7 @@ describe('escape-xml', () => {
 
   test('No special symbol', () => {
     const options = {
-      platform        : 'amazon-alexa',
+      platform        : 'amazon-polly',
       escapeXmlSymbols: true
     };
     const text = `Procter and Gamble`;
@@ -27,7 +27,7 @@ describe('escape-xml', () => {
 
   test('Symbol &', () => {
     const options = {
-      platform        : 'amazon-alexa',
+      platform        : 'amazon-polly',
       escapeXmlSymbols: true
     };
     const text = `Procter & Gamble`;
@@ -43,7 +43,7 @@ describe('escape-xml', () => {
 
   test('Already escaped symbol &', () => {
     const options = {
-      platform        : 'amazon-alexa',
+      platform        : 'amazon-polly',
       escapeXmlSymbols: true
     };
     const text = `Procter &amp; Gamble`;
@@ -59,7 +59,7 @@ describe('escape-xml', () => {
 
   test('Symbol \'', () => {
     const options = {
-      platform        : 'amazon-alexa',
+      platform        : 'amazon-polly',
       escapeXmlSymbols: true
     };
     const text = `Levi's`;
@@ -75,7 +75,7 @@ describe('escape-xml', () => {
 
   test('German with both symbols', () => {
     const options = {
-      platform        : 'amazon-alexa',
+      platform        : 'amazon-polly',
       escapeXmlSymbols: true
     };
     const ssml = speech.toSSML(markdown, options);
@@ -91,7 +91,7 @@ describe('escape-xml', () => {
 
   test('No escaping', () => {
     const options = {
-      platform        : 'amazon-alexa',
+      platform        : 'amazon-polly',
       escapeXmlSymbols: false
     };
     const ssml = speech.toSSML(markdown, options);
@@ -105,28 +105,13 @@ describe('escape-xml', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('Google with no support of escapeXmlSymbols', () => {
-    const options = {
-      platform        : 'google-assistant',
-      escapeXmlSymbols: true
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-    <speak>
-    ${ markdown }
-    </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
 });
 
 describe('escape-xml: non-regression with SpeechMarkdown elements', () => {
 
   test('break short syntax', () => {
     const options = {
-      platform        : 'amazon-alexa',
+      platform        : 'amazon-polly',
       escapeXmlSymbols: true
     };
     const text = `Procter [250ms] and Gamble`;
@@ -142,7 +127,7 @@ describe('escape-xml: non-regression with SpeechMarkdown elements', () => {
 
   test('break long syntax', () => {
     const options = {
-      platform        : 'amazon-alexa',
+      platform        : 'amazon-polly',
       escapeXmlSymbols: true
     };
     const text = `Procter [break:"500ms"] and [break:"weak"] Gamble`;
@@ -158,7 +143,7 @@ describe('escape-xml: non-regression with SpeechMarkdown elements', () => {
 
   test('lang', () => {
     const options = {
-      platform        : 'amazon-alexa',
+      platform        : 'amazon-polly',
       escapeXmlSymbols: true
     };
     const text = `In Paris, they pronounce it (Paris)[lang:"fr-FR"]`;

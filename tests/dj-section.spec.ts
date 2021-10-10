@@ -16,30 +16,6 @@ describe('dj-section normal to dj to normal', () => {
     Now back to normal speech.
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
-
-    const options = {
-      platform: 'amazon-alexa'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-    <speak>
-    Normal speech.
-
-
-    <amazon:domain name="music">
-    Switching to a music/media announcer.
-
-    </amazon:domain>
-
-    Now back to normal speech.
-    </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
   test('converts to SSML - Amazon Polly', () => {
 
     const options = {
@@ -84,44 +60,6 @@ describe('dj-section normal to dj to normal', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Google Assistant', () => {
-
-    const options = {
-      platform: 'google-assistant',
-      preserveEmptyLines: false
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Normal speech.
-      Switching to a music/media announcer.
-      Now back to normal speech.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby',
-      preserveEmptyLines: false
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Normal speech.
-      Switching to a music/media announcer.
-      Now back to normal speech.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
   test('converts to Plain Text', () => {
 
     const options = {
@@ -152,29 +90,10 @@ describe('dj-section end speak tag at end', () => {
     Section 1
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
 
     const options = {
-      platform: 'amazon-alexa'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-
-      <amazon:domain name="music">
-      Section 1</amazon:domain>
-
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Google Assistant', () => {
-
-    const options = {
-      platform: 'google-assistant',
+      platform: 'amazon-polly',
       preserveEmptyLines: false
     };
     const ssml = speech.toSSML(markdown, options);
@@ -188,10 +107,10 @@ describe('dj-section end speak tag at end', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Samsung Bixby', () => {
+  test('converts to SSML - Amazon Polly (Neural)', () => {
 
     const options = {
-      platform: 'samsung-bixby',
+      platform: 'amazon-polly-neural',
       preserveEmptyLines: false
     };
     const ssml = speech.toSSML(markdown, options);
@@ -227,28 +146,10 @@ describe('dj-section section on same line', () => {
     #[dj] Hey there, nice to meet you
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
 
     const options = {
-      platform: 'amazon-alexa'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-
-      <amazon:domain name="music"> Hey there, nice to meet you</amazon:domain>
-
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Google Assistant', () => {
-
-    const options = {
-      platform: 'google-assistant'
+      platform: 'amazon-polly'
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -261,10 +162,10 @@ describe('dj-section section on same line', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Samsung Bixby', () => {
+  test('converts to SSML - Amazon Polly (Neural)', () => {
 
     const options = {
-      platform: 'samsung-bixby'
+      platform: 'amazon-polly-neural'
     };
     const ssml = speech.toSSML(markdown, options);
 

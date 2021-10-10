@@ -11,22 +11,61 @@ describe('audio-standard', () => {
     Announcing Speech Markdown.
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
 
     const options = {
-      platform: 'amazon-alexa'
+      platform: 'amazon-polly'
     };
     const ssml = speech.toSSML(markdown, options);
 
     const expected = dedent`
       <speak>
-      <audio src="https://www.speechmarkdown.org/test.mp3"/>
+
       Announcing Speech Markdown.
       </speak>
     `;
-
     expect(ssml).toBe(expected);
   });
+
+  test('converts to SSML - Amazon Polly (Neural)', () => {
+
+    const options = {
+      platform: 'amazon-polly-neural'
+    };
+    const ssml = speech.toSSML(markdown, options);
+
+    const expected = dedent`
+      <speak>
+
+      Announcing Speech Markdown.
+      </speak>
+    `;
+    expect(ssml).toBe(expected);
+  });
+
+  test('converts to Plain Text', () => {
+
+    const options = {
+    };
+    const text = speech.toText(markdown, options);
+
+    const expected = dedent`
+      Announcing Speech Markdown.
+    `;
+
+    expect(text).toBe(expected);
+  });
+
+});
+
+describe('audio-standard single quote', () => {
+
+  const speech = new SpeechMarkdown();
+
+  const markdown = dedent`
+    !['https://www.speechmarkdown.org/test.mp3']
+    Announcing Speech Markdown.
+  `;
 
   test('converts to SSML - Amazon Polly', () => {
 
@@ -60,133 +99,6 @@ describe('audio-standard', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Google Assistant', () => {
-
-    const options = {
-      platform: 'google-assistant'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      <audio src="https://www.speechmarkdown.org/test.mp3"/>
-      Announcing Speech Markdown.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      <audio src="https://www.speechmarkdown.org/test.mp3"></audio>
-      Announcing Speech Markdown.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      <audio src="https://www.speechmarkdown.org/test.mp3"/>
-      Announcing Speech Markdown.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-test('converts to Plain Text', () => {
-
-    const options = {
-    };
-    const text = speech.toText(markdown, options);
-
-    const expected = dedent`
-      Announcing Speech Markdown.
-    `;
-
-    expect(text).toBe(expected);
-  });
-
-});
-
-describe('audio-standard single quote', () => {
-
-  const speech = new SpeechMarkdown();
-
-  const markdown = dedent`
-    !['https://www.speechmarkdown.org/test.mp3']
-    Announcing Speech Markdown.
-  `;
-
-  test('converts to SSML - Amazon Alexa', () => {
-
-    const options = {
-      platform: 'amazon-alexa'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      <audio src="https://www.speechmarkdown.org/test.mp3"/>
-      Announcing Speech Markdown.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Google Assistant', () => {
-
-    const options = {
-      platform: 'google-assistant'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      <audio src="https://www.speechmarkdown.org/test.mp3"/>
-      Announcing Speech Markdown.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      <audio src="https://www.speechmarkdown.org/test.mp3"></audio>
-      Announcing Speech Markdown.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
   test('converts to Plain Text', () => {
 
     const options = {
@@ -210,52 +122,36 @@ describe('audio-standard soundbank', () => {
     !['soundbank://soundlibrary/alarms/air_horns/air_horn_01'] Air horn
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
 
     const options = {
-      platform: 'amazon-alexa'
+      platform: 'amazon-polly'
     };
-    const ssml = speech.toSSML(markdown, options);
+    const text = speech.toSSML(markdown, options);
 
     const expected = dedent`
-      <speak>
-      <audio src="soundbank://soundlibrary/alarms/air_horns/air_horn_01"/> Air horn
-      </speak>
+    <speak>
+     Air horn
+    </speak>
     `;
 
-    expect(ssml).toBe(expected);
+    expect(text).toBe(expected);
   });
 
-  test('converts to SSML - Google Assistant', () => {
+  test('converts to SSML - Amazon Polly (Neural)', () => {
 
     const options = {
-      platform: 'google-assistant'
+      platform: 'amazon-polly-neural'
     };
-    const ssml = speech.toSSML(markdown, options);
+    const text = speech.toSSML(markdown, options);
 
     const expected = dedent`
-      <speak>
-      <audio src="soundbank://soundlibrary/alarms/air_horns/air_horn_01"/> Air horn
-      </speak>
+    <speak>
+     Air horn
+    </speak>
     `;
 
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      <audio src="soundbank://soundlibrary/alarms/air_horns/air_horn_01"></audio> Air horn
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
+    expect(text).toBe(expected);
   });
 
   test('converts to Plain Text', () => {
@@ -280,54 +176,35 @@ describe('audio-standard with Amazon signed URL', () => {
     Announcing Speech Markdown.
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
 
     const options = {
-      platform: 'amazon-alexa'
+      platform: 'amazon-polly'
     };
     const ssml = speech.toSSML(markdown, options);
 
     const expected = dedent`
       <speak>
-      <audio src="https://sample-dev.s3.amazonaws.com/path/18327803923/f7fb4173-4eab-46fc-80ec-020204a615f9.mp3?AWSAccessKeyId=AKXXXXXXXXXXXXXXXXXX&amp;Expires=1596986208&amp;Signature=VL6q9pYc8NTjf6gKVqN0Cem0WTA="/>
+
       Announcing Speech Markdown.
       </speak>
     `;
-
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Google Assistant', () => {
+  test('converts to SSML - Amazon Polly (Neural)', () => {
 
     const options = {
-      platform: 'google-assistant'
+      platform: 'amazon-polly-neural'
     };
     const ssml = speech.toSSML(markdown, options);
 
     const expected = dedent`
       <speak>
-      <audio src="https://sample-dev.s3.amazonaws.com/path/18327803923/f7fb4173-4eab-46fc-80ec-020204a615f9.mp3?AWSAccessKeyId=AKXXXXXXXXXXXXXXXXXX&amp;Expires=1596986208&amp;Signature=VL6q9pYc8NTjf6gKVqN0Cem0WTA="/>
+
       Announcing Speech Markdown.
       </speak>
     `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      <audio src="https://sample-dev.s3.amazonaws.com/path/18327803923/f7fb4173-4eab-46fc-80ec-020204a615f9.mp3?AWSAccessKeyId=AKXXXXXXXXXXXXXXXXXX&amp;Expires=1596986208&amp;Signature=VL6q9pYc8NTjf6gKVqN0Cem0WTA="></audio>
-      Announcing Speech Markdown.
-      </speak>
-    `;
-
     expect(ssml).toBe(expected);
   });
 

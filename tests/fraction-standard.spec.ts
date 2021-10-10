@@ -10,23 +10,7 @@ describe('fraction-standard', () => {
     Add (2/3)[fraction] cup of milk.
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
-
-    const options = {
-      platform: 'amazon-alexa'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Add <say-as interpret-as="fraction">2/3</say-as> cup of milk.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Amazon Polly', () => {
+ test('converts to SSML - Amazon Polly', () => {
 
     const options = {
       platform: 'amazon-polly'
@@ -58,55 +42,7 @@ describe('fraction-standard', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Google Assistant', () => {
-
-    const options = {
-      platform: 'google-assistant'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Add <say-as interpret-as="fraction">2/3</say-as> cup of milk.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Add <say-as interpret-as="fraction">2/3</say-as> cup of milk.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Add <say-as interpret-as="fraction">2/3</say-as> cup of milk.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to Plain Text', () => {
+ test('converts to Plain Text', () => {
 
     const options = {
     };
@@ -118,7 +54,6 @@ describe('fraction-standard', () => {
 
     expect(text).toBe(expected);
   });
-
 });
 
 describe('fraction-standard includes a plus sign', () => {
@@ -129,10 +64,10 @@ describe('fraction-standard includes a plus sign', () => {
     Add (1+1/2)[fraction] cups of flour.
   `;
 
-  test('converts to SSML - Amazon Alexa', () => {
+  test('converts to SSML - Amazon Polly', () => {
 
     const options = {
-      platform: 'amazon-alexa'
+      platform: 'amazon-polly'
     };
     const ssml = speech.toSSML(markdown, options);
 
@@ -145,42 +80,10 @@ describe('fraction-standard includes a plus sign', () => {
     expect(ssml).toBe(expected);
   });
 
-  test('converts to SSML - Google Assistant', () => {
+  test('converts to SSML - Amazon Polly (Neural)', () => {
 
     const options = {
-      platform: 'google-assistant'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Add <say-as interpret-as="fraction">1+1/2</say-as> cups of flour.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Samsung Bixby', () => {
-
-    const options = {
-      platform: 'samsung-bixby'
-    };
-    const ssml = speech.toSSML(markdown, options);
-
-    const expected = dedent`
-      <speak>
-      Add <say-as interpret-as="fraction">1+1/2</say-as> cups of flour.
-      </speak>
-    `;
-
-    expect(ssml).toBe(expected);
-  });
-
-  test('converts to SSML - Microsoft Azure', () => {
-
-    const options = {
-      platform: 'microsoft-azure'
+      platform: 'amazon-polly'
     };
     const ssml = speech.toSSML(markdown, options);
 
