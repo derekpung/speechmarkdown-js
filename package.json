@@ -1,5 +1,5 @@
 {
-  "name": "speechmarkdown-polly-js",
+  "name": "speechmarkdown-amzn-polly-js",
   "version": "1.9.1",
   "description": "Speech Markdown parser and formatters in TypeScript. Updated suppport for Amazon Polly",
   "main": "dist/index.js",

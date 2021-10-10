@@ -2,7 +2,7 @@
 [![Node.js version][nodejs-badge]][nodejs]
 [![MIT][license-badge]][LICENSE]
 
-# speechmarkdown-polly-js
+# speechmarkdown-amzn-polly-js
 
 This project adds speechmarkdown support for Amazon Polly, built on top of 
 [speechmarkdown-js](https://github.com/speechmarkdown/speechmarkdown-js)
