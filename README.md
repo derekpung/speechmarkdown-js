@@ -2,26 +2,78 @@
 [![Node.js version][nodejs-badge]][nodejs]
 [![MIT][license-badge]][LICENSE]
 
-# speechmarkdown-js
+# speechmarkdown-polly-js
 
-Speech Markdown grammar, parser, and formatters for use with JavaScript.
+This project adds speechmarkdown support for Amazon Polly, built on top of 
+[speechmarkdown-js](https://github.com/speechmarkdown/speechmarkdown-js)
 
-This project is a work-in-progress. All volunteers are appreciated!
+Initiated the migration of polly-only features since the project seemed to be dormant in the original git repository. [Pull Request](https://github.com/speechmarkdown/speechmarkdown-js/pull/66)
 
-Find the architecture [here](./docs/architecture.md)
+Includes XML escaping by Garcia Guillaume [Pull Request](https://github.com/speechmarkdown/speechmarkdown-js/pull/59)
 
+## Differences
+Some tags from the original speechmarkdown-js library has been disabled due to the nature of how ssml is used in amazon polly.
+
+* Removal of voice tag
+    Voice is specified separately in the api call. Hence this solution is only for converting speechmarkdown to ssml, and assumes that the user is sure how the generated ssml will be used with a valid voice id.
+
+[Amazon Polly Neural Voices](https://docs.aws.amazon.com/polly/latest/dg/ntts-voices-main.html)
+
+## MD support
+
+#### Neural Only
+* [x] newscaster (section)
+
+#### Standard Only
+* [x] emphasis
+* [x] pitch
+* [x] timbre
+* [x] whisper
+
+#### Both Standard and Neural
+
+* [x] address
+* [x] break (time)
+* [x] break (strength)
+* [x] cardinal
+* [x] characters / chars
+* [x] date
+* [x] digits
+* [x] drc
+* [x] expletive / bleep
+* [x] fraction
+* [x] ipa
+* [x] lang
+* [x] lang (section)
+* [x] mark
+* [x] number
+* [x] ordinal
+* [x] telephone / phone
+* [x] rate
+* [x] sub
+* [x] time
+* [x] unit
+* [x] volume / vol
+
+#### Unsupported
+* [ ] breath
+* [ ] auto-breath
+* [ ] x-sampa
+* [ ] phonation
+
+---
 
 ## Quick start
 
-### SSML - Amazon Alexa
+### SSML - Amazon Polly
 Convert Speech Markdown to SSML for Amazon Alexa
 
 ```js
-const smd = require('speechmarkdown-js');
+const smd = require('speechmarkdown-polly-js');
 
 const markdown = `Sample [3s] speech [250ms] markdown`;
 const options = {
-    platform: 'amazon-alexa'
+    platform: 'amazon-polly'
 };
 
 const speech = new smd.SpeechMarkdown();
@@ -36,16 +88,15 @@ Sample <break time="3s"/> speech <break time="250ms"/> markdown
 </speak>
 ```
 
-
-### SSML - Google Assistant
-Convert Speech Markdown to SSML for Google Assistant
+### SSML - Amazon Polly Neural
+Convert Speech Markdown to SSML for Amazon Alexa
 
 ```js
-const smd = require('speechmarkdown-js');
+const smd = require('speechmarkdown-polly-js');
 
 const markdown = `Sample [3s] speech [250ms] markdown`;
 const options = {
-    platform: 'google-assistant'
+    platform: 'amazon-polly-neural'
 };
 
 const speech = new smd.SpeechMarkdown();
@@ -59,13 +110,12 @@ The resulting SSML is:
 Sample <break time="3s"/> speech <break time="250ms"/> markdown
 </speak>
 ```
-
 
 ### Plain Text
 Convert Speech Markdown to Plain Text
 
 ```js
-const smd = require('speechmarkdown-js');
+const smd = require('speechmarkdown-polly-js');
 
 const markdown = `Sample [3s] speech [250ms] markdown`;
 const options = {};
@@ -86,11 +136,11 @@ Sample speech markdown
 
 You can pass `options` into the constructor:
 ```js
-const smd = require('speechmarkdown-js');
+const smd = require('speechmarkdown-polly-js');
 
 const markdown = `Sample [3s] speech [250ms] markdown`;
 const options = {
-    platform: 'amazon-alexa'
+    platform: 'amazon-polly'
 };
 
 const speech = new smd.SpeechMarkdown(options);
@@ -100,11 +150,11 @@ const ssml = speech.toSSML(markdown);
 
 Or in the methods `toSSML` and `toText`:
 ```js
-const smd = require('speechmarkdown-js');
+const smd = require('speechmarkdown-polly-js');
 
 const markdown = `Sample [3s] speech [250ms] markdown`;
 const options = {
-    platform: 'amazon-alexa'
+    platform: 'amazon-polly'
 };
 
 const speech = new smd.SpeechMarkdown();
@@ -113,78 +163,13 @@ const ssml = speech.toSSML(markdown, options);
 
 Available options are:
 
-* `platform` (string) - Determines the formatter to use to render SSML. Valid values are: `amazon-alexa` and `google-assistant`.
+* `platform` (string) - Determines the formatter to use to render SSML. Valid values are: `amazon-polly` and `amazon-polly-neural`.
 
 * `includeFormatterComment` (boolean) - Adds an XML comment to the SSML output indicating the formatter used. Default is `false`.
 
 * `includeSpeakTag` (boolean) - Determines if the `<speak>` tag will be rendered in the SSML output. Default is `true`.
 
 * `includeParagraphTag` (boolean) - Determines if the `<p>` tag will be rendered in the SSML output. Default is `false`.
-
-
-## Working on this project?
-
-### Grammar
-The biggest place we need help right now is with the completion of the grammar and formatters.
-
-#### Short Format
-
-* [x] break
-* [x] emphasis - strong
-* [x] emphasis - moderate
-* [x] emphasis - none
-* [x] emphasis - reduced
-* [ ] ipa
-* [ ] sub
-
-#### Standard Format
-
-* [x] address
-* [x] audio
-* [x] break (time)
-* [x] break (strength)
-* [x] characters / chars
-* [x] date
-* [x] defaults (section)
-* [x] disappointed
-* [x] disappointed (section)
-* [x] dj (section)
-* [x] emphasis
-* [x] excited
-* [x] excited (section)
-* [x] expletive / bleep
-* [x] fraction
-* [x] interjection
-* [x] ipa
-* [x] lang
-* [x] lang (section)
-* [x] mark
-* [x] newscaster (section)
-* [x] number
-* [x] ordinal
-* [x] telephone / phone
-* [x] pitch
-* [x] rate
-* [x] sub
-* [x] time
-* [x] unit
-* [x] voice
-* [x] voice (section)
-* [x] volume / vol
-* [x] whisper
-
-### Available scripts
-
-+ `clean` - remove coverage data, Jest cache and transpiled files,
-+ `build` - transpile TypeScript to ES5,
-+ `build:browser` - creates single file `./dist.browser/speechmarkdown.js` file for use in browser,
-+ `build:minify` - creates single file `./dist.browser/speechmarkdown.min.js` file for use in browser,
-+ `build:watch` - interactive watch mode to automatically transpile source files,
-+ `lint` - lint source files and tests,
-+ `test` - run tests,
-+ `test:watch` - interactive watch mode to automatically re-run tests
-
-
 
 ## License
 Licensed under the MIT. See the [LICENSE](https://github.com/speechmarkdown/speechmarkdown-js/blob/master/LICENSE) file for details.
