@@ -17,10 +17,10 @@
     "Garcia Guillaume (http://guillaumegarcia13.blogspot.fr)"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/derekpung/speechmarkdown-js/tree/amzn-polly-support#readme",
+  "homepage": "https://github.com/derekpung/speechmarkdown-js/tree/amazon-polly-only#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/derekpung/speechmarkdown-js/tree/amzn-polly-support"
+    "url": "https://github.com/derekpung/speechmarkdown-js/tree/amazon-polly-only"
   },
   "bugs": {
     "url": "https://github.com/speechmarkdown/speechmarkdown-js/issues"
